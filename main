@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic HTML Preview</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background: #f9f9f9;
+        }
+        #preview {
+            flex-grow: 1;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="preview"></iframe>
+
+    <script>
+        // Fetch the code from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+
+        // Load the HTML code into the iframe
+        const preview = document.getElementById('preview');
+        preview.srcdoc = code || `
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #333;
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>No Code Provided</h1>
+    <p>Please pass HTML via the "code" parameter.</p>
+</body>
+</html>`;
+    </script>
+</body>
+</html>
